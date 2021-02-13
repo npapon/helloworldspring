@@ -14,7 +14,7 @@
 	<name>helloworld2</name>
 	<description>Mon premier projet springboot avec Spring Tool Suite</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -1,34 +1,37 @@
 package fr.papounworld.helloworld;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import fr.papounworld.helloworld.model.HelloWorld;
+import fr.papounworld.helloworld.service.BusinessService;
+
+
+
+
 @SpringBootApplication
-public class Helloworld2Application {
+public class Helloworld2Application implements CommandLineRunner {
+	
+	@Autowired
+	private BusinessService businessService;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Helloworld2Application.class, args);
-		System.out.println ("hello ");
+	}		
+
+ 
+
+	@Override
+	public void run(String... args) throws Exception {
+HelloWorld helloWorld = businessService.getHelloWorld();
+		System.out.println(helloWorld);
+	
 		
-	    final Logger LOGGER = LogManager.getLogger( Helloworld2Application.class.getName() );
-	    
-        LOGGER.log( Level.INFO, "info" );			
-        LOGGER.log( Level.ERROR, "erreur" );		
-        
-        try {
-            int result = 3 / 0;
-        } catch ( Exception exception ) {
-            LOGGER.log( Level.ERROR, exception );
-            LOGGER.log( Level.INFO, "hello" );
-        }
-
-
-
-	    
 	}
 
 }
